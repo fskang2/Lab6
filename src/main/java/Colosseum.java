@@ -103,7 +103,39 @@ public class Colosseum {
      *         <p>
      */
     public static Pokemon buildPokemon() {
-        Pokemon returnPokemon = null;
+        Scanner sc = new Scanner(System.in);
+        Pokemon returnPokemon = new Pokemon();
+
+        System.out.println("Select from the following Pokemon types:");
+        System.out.println("1 - Electric Pokemon");
+        System.out.println("2 - Fire Pokemon");
+        System.out.println("3 - Water Pokemon");
+        int type = sc.nextInt();
+        if (type == 1) {
+            returnPokemon.pokeType = Pokemon.PokemonType.ELECTRIC;
+        }
+        if (type == 2) {
+            returnPokemon.pokeType = Pokemon.PokemonType.FIRE;
+        }
+        if (type == 3) {
+            returnPokemon.pokeType = Pokemon.PokemonType.WATER;
+        }
+
+        sc.nextLine();
+
+        System.out.println("Please name your Pokemon: ");
+        returnPokemon.setName(sc.nextLine());
+
+        System.out.println("How many hit points will it have? (1-50): ");
+        returnPokemon.setHitPoints(sc.nextInt());
+
+        System.out.println("Split " + returnPokemon.getHitPoints() + " points between attack and defense level.");
+        System.out.println("Enter your attack level (1-" + (returnPokemon.getHitPoints() - 1) + "): ");
+        returnPokemon.setAttackLevel(sc.nextInt());
+
+        System.out.println("Enter your defense level (1-" + (returnPokemon.getHitPoints() - returnPokemon.getAttackLevel()) + "): ");
+        returnPokemon.setDefenseLevel(sc.nextInt());
+
         return returnPokemon;
     }
 
